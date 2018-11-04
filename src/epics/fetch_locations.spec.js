@@ -17,7 +17,7 @@ describe("fetchLocationsEpic", () => {
       const dependencies = {
         getJSON: () =>
           cold("---a", {
-            a: []
+            a: { ChargeDevice: [] }
           })
       };
       const output$ = fetchLocationsEpic(action$, state$, dependencies);

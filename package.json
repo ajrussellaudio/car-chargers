@@ -2,6 +2,7 @@
   "name": "car-chargers",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://chargepoints.dft.gov.uk",
   "dependencies": {
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -25,5 +26,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
+  }
 }
