@@ -2,8 +2,8 @@ import { createEpicMiddleware } from "redux-observable";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { ajax } from "rxjs/ajax";
-import reducer from "../reducers";
-import epic from "../epics";
+import reducer from "./reducers";
+import epic from "./epics";
 
 const epicMiddleware = createEpicMiddleware({
   dependencies: {
