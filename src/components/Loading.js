@@ -1,6 +1,6 @@
 import React from "react";
-import { Notification } from "react-bulma-components";
+import { Notification } from "bloomer";
 
-const Loading = () => <Notification color="info">Loading...</Notification>;
+const Loading = () => <Notification isColor="info">Loading...</Notification>;
 
 export default Loading;

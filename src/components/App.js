@@ -1,21 +1,35 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
+import { Columns, Column, Notification, Tile } from "bloomer";
+
 import { fetchLocations } from "../redux/actions";
-import {
-  Columns,
-  Section,
-  Container,
-  Heading
-} from "react-bulma-components/full";
+
 import Map from "./Map";
 import Loading from "./Loading";
+// import Navbar from "./Navbar";
 import FilterForm from "./FilterForm";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navbarBurgerOpen: false
+    };
+    this.handleNavbarBurgerToggle = this.handleNavbarBurgerToggle.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchLocations();
   }
+
+  handleNavbarBurgerToggle() {
+    this.setState(prevState => ({
+      navbarBurgerOpen: !prevState.navbarBurgerOpen
+    }));
+  }
+
   render() {
     const {
       locations: { list, isLoading, error }
@@ -23,29 +37,20 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <h1>Electric Vehicle Charging Locations</h1>
-        {isLoading && <h3>Loading...</h3>}
-        {!isLoading && !error && <Map locations={list} />}
-        {error && <h3>{error}</h3>} */}
-        <Columns>
-          <Columns.Column size="three-quarters">
-            <Section>
-              <Container fluid>
-                <Heading>Map</Heading>
-                {isLoading && <Loading />}
-                {!isLoading && !error && <Map locations={list} />}
-                {error && <h3>{error}</h3>}
-              </Container>
-            </Section>
-          </Columns.Column>
-          <Columns.Column>
-            <Section>
-              <Container fluid>
-                <FilterForm />
-              </Container>
-            </Section>
-          </Columns.Column>
-        </Columns>
+        <Tile isAncestor>
+          <Tile isParent isVertical isSize={8}>
+            <Tile isChild>
+              {isLoading && <Loading />}
+              {!isLoading && !error && <Map locations={list} />}
+              {error && <h3>{error}</h3>}
+            </Tile>
+          </Tile>
+          <Tile isParent isVertical isSize={8}>
+            <Tile isChild>
+              <FilterForm />
+            </Tile>
+          </Tile>
+        </Tile>
       </div>
     );
   }

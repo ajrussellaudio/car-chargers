@@ -1,6 +1,5 @@
 import React from "react";
 import { Popup } from "react-leaflet";
-import { Content } from "react-bulma-components/full";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
@@ -55,13 +54,11 @@ const paymentDetails = ({ PaymentRequiredFlag, PaymentDetails }) =>
 
 const InfoWindow = ({ location }) => (
   <Popup>
-    <Content size="small">
-      <h1>{location.ChargeDeviceName}</h1>
-      <p>{fullAddress(location)}</p>
-      {accessible24hours(location)}
-      {connectorTypes(location)}
-      {paymentDetails(location)}
-    </Content>
+    <h1>{location.ChargeDeviceName}</h1>
+    <p>{fullAddress(location)}</p>
+    {accessible24hours(location)}
+    {connectorTypes(location)}
+    {paymentDetails(location)}
   </Popup>
 );
 
