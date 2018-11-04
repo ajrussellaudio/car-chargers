@@ -5,14 +5,13 @@ import {
   fetchLocationsSuccess,
   fetchLocationsFailure
 } from "../actions";
-
-const url = "/api/retrieve/registry/format/json";
+import { URL } from "../constants";
 
 export const fetchLocationsEpic = (action$, state$, { getJSON }) =>
   action$.pipe(
     ofType(FETCH_LOCATIONS),
     switchMap(() =>
-      getJSON(url).pipe(
+      getJSON(URL).pipe(
         pluck("ChargeDevice"),
         map(response => fetchLocationsSuccess(response))
       )
