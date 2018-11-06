@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { App } from "./App";
 import Loading from "./Loading";
-import Map from "./Map";
+import FilteredMap from "./FilteredMap";
 import Error from "./Error";
 
 describe("App", () => {
@@ -31,7 +31,7 @@ describe("App", () => {
     expect(wrapper.find(Loading).length).toBe(1);
   });
 
-  it("renders Map component when loading done", () => {
+  it("renders FilteredMap component when loading done", () => {
     const locationsList = [1, 2, 3, 4, 5, 6];
     const props = {
       ...defaultProps,
@@ -41,25 +41,7 @@ describe("App", () => {
       }
     };
     const wrapper = shallow(<App {...props} />);
-    expect(wrapper.find(Map).length).toBe(1);
-  });
-
-  it("passes list array to Map component", () => {
-    const locationsList = [1, 2, 3, 4, 5, 6];
-    const props = {
-      ...defaultProps,
-      locations: {
-        ...defaultProps.locations,
-        list: locationsList
-      }
-    };
-    const wrapper = shallow(<App {...props} />);
-    expect(
-      wrapper
-        .find(Map)
-        .first()
-        .props().locations
-    ).toEqual(locationsList);
+    expect(wrapper.find(FilteredMap).length).toBe(1);
   });
 
   it("renders Error component if error occured", () => {

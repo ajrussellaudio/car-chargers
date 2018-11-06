@@ -1,4 +1,6 @@
 import Map from "./Map";
 import withFilter from "../hoc/withFilter";
 
-export default withFilter(Map);
+const FilteredMap = withFilter(Map);
+
+export default FilteredMap;

@@ -18,8 +18,8 @@ const Marker = ({ location }) => {
 Marker.propTypes = {
   location: PropTypes.shape({
     ChargeDeviceLocation: PropTypes.shape({
-      Latitude: PropTypes.number,
-      Longitude: PropTypes.number
+      Latitude: PropTypes.string,
+      Longitude: PropTypes.string
     })
   })
 };
