@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Marker as LeafletMarker } from "react-leaflet";
 import InfoWindow from "./InfoWindow";
 
@@ -12,6 +13,15 @@ const Marker = ({ location }) => {
       <InfoWindow location={location} />
     </LeafletMarker>
   );
+};
+
+Marker.propTypes = {
+  location: PropTypes.shape({
+    ChargeDeviceLocation: PropTypes.shape({
+      Latitude: PropTypes.number,
+      Longitude: PropTypes.number
+    })
+  })
 };
 
 export default Marker;

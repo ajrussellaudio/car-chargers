@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { Columns, Column, Notification, Tile } from "bloomer";
+import { Tile } from "bloomer";
 
 import { fetchLocations } from "../redux/actions";
 
 import Map from "./Map";
 import Loading from "./Loading";
-// import Navbar from "./Navbar";
+import Error from "./Error";
 import FilterForm from "./FilterForm";
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +43,7 @@ class App extends Component {
             <Tile isChild>
               {isLoading && <Loading />}
               {!isLoading && !error && <Map locations={list} />}
-              {error && <h3>{error}</h3>}
+              {error && <Error message={error} />}
             </Tile>
           </Tile>
           <Tile isParent isVertical isSize={8}>
@@ -55,6 +56,15 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  locations: PropTypes.shape({
+    list: PropTypes.array,
+    isLoading: PropTypes.bool,
+    error: PropTypes.string
+  }),
+  fetchLocations: PropTypes.func
+};
 
 const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch =>

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Popup } from "react-leaflet";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import {
@@ -61,5 +62,23 @@ const InfoWindow = ({ location }) => (
     {paymentDetails(location)}
   </Popup>
 );
+
+InfoWindow.propTypes = {
+  location: PropTypes.shape({
+    ChargeDeviceName: PropTypes.string,
+    ChargeDeviceLocation: PropTypes.shape({
+      Address: PropTypes.shape({
+        BuildingName: PropTypes.string,
+        BuildingNumber: PropTypes.string,
+        Thoroughfare: PropTypes.string,
+        Street: PropTypes.string,
+        PostTown: PropTypes.string,
+        County: PropTypes.string
+      })
+    }),
+    Accessible24Hours: PropTypes.bool,
+    Connector: PropTypes.array
+  })
+};
 
 export default InfoWindow;

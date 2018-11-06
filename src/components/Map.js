@@ -1,8 +1,9 @@
 import React from "react";
-import { Map, TileLayer } from "react-leaflet";
+import PropTypes from "prop-types";
+import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import Marker from "./Marker";
 
-class LeafletMap extends React.Component {
+class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +16,7 @@ class LeafletMap extends React.Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <Map center={position} zoom={this.state.zoom}>
+      <LeafletMap center={position} zoom={this.state.zoom}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -23,9 +24,13 @@ class LeafletMap extends React.Component {
         {this.props.locations.map(location => (
           <Marker key={location.ChargeDeviceId} location={location} />
         ))}
-      </Map>
+      </LeafletMap>
     );
   }
 }
 
-export default LeafletMap;
+Map.propTypes = {
+  locations: PropTypes.array
+};
+
+export default Map;

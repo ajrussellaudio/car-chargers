@@ -1,6 +1,5 @@
 import React from "react";
-import { Heading } from "react-bulma-components/full";
 
-const FilterForm = () => <Heading>Form</Heading>;
+const FilterForm = () => <h1>Form</h1>;
 
 export default FilterForm;
