@@ -1,4 +1,4 @@
-import { ADD_FILTER } from "../actions";
+import { ADD_FILTER, REMOVE_FILTER } from "../actions";
 
 const initialState = {};
 
@@ -9,6 +9,10 @@ export default function filterReducer(state = initialState, action) {
         ...state,
         ...action.payload
       };
+    }
+    case REMOVE_FILTER: {
+      const { [action.payload]: x, ...stateMinusKey } = state;
+      return stateMinusKey;
     }
     default: {
       return state;

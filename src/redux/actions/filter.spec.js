@@ -1,5 +1,5 @@
-import { ADD_FILTER } from "./types";
-import { addFilter } from "./filter";
+import { ADD_FILTER, REMOVE_FILTER } from "./types";
+import { addFilter, removeFilter } from "./filter";
 
 describe("FILTER actions", () => {
   describe("addFilter", () => {
@@ -11,5 +11,14 @@ describe("FILTER actions", () => {
       };
       expect(addFilter(newFilter)).toEqual(expectedAction);
     });
+  });
+
+  describe("removeFilter", () => {
+    const filterToRemove = "isAwesome";
+    const expectedAction = {
+      type: REMOVE_FILTER,
+      payload: filterToRemove
+    };
+    expect(removeFilter(filterToRemove)).toEqual(expectedAction);
   });
 });
