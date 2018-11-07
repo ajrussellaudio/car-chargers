@@ -11,12 +11,12 @@ class Checkbox extends React.Component {
   }
 
   handleChange() {
-    const { filterKey, addFilter, removeFilter } = this.props;
+    const { filterKey, inverse = false, addFilter, removeFilter } = this.props;
     this.setState(
       prevState => ({ checked: !prevState.checked }),
       () => {
         if (this.state.checked) {
-          addFilter({ [filterKey]: true });
+          addFilter({ [filterKey]: !inverse });
         } else {
           removeFilter(filterKey);
         }
@@ -43,6 +43,7 @@ class Checkbox extends React.Component {
 Checkbox.propTypes = {
   filterKey: PropTypes.string,
   text: PropTypes.string,
+  inverse: PropTypes.bool,
   addFilter: PropTypes.func,
   removeFilter: PropTypes.func
 };

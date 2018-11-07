@@ -5,8 +5,8 @@ import InfoWindow from "./InfoWindow";
 
 const Marker = ({ location }) => {
   const position = [
-    location.ChargeDeviceLocation.Latitude,
-    location.ChargeDeviceLocation.Longitude
+    parseFloat(location.ChargeDeviceLocation.Latitude),
+    parseFloat(location.ChargeDeviceLocation.Longitude)
   ];
   return (
     <LeafletMarker position={position}>

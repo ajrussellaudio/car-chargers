@@ -41,7 +41,8 @@ const connectorTypes = ({ Connector, ChargeDeviceId }) => (
 const paymentDetails = ({ PaymentRequiredFlag, PaymentDetails }) =>
   PaymentRequiredFlag ? (
     <p className="payment-details">
-      <Icon icon={faPoundSign} /> {PaymentDetails || "Details not available"}
+      <Icon icon={faPoundSign} />{" "}
+      {PaymentDetails || "Payment required, but details not available"}
     </p>
   ) : (
     <p className="payment-details">
@@ -55,11 +56,13 @@ const paymentDetails = ({ PaymentRequiredFlag, PaymentDetails }) =>
 
 const InfoWindow = ({ location }) => (
   <Popup>
-    <h1>{location.ChargeDeviceName}</h1>
-    <p>{fullAddress(location)}</p>
-    {accessible24hours(location)}
-    {connectorTypes(location)}
-    {paymentDetails(location)}
+    <React.Fragment>
+      <h1>{location.ChargeDeviceName}</h1>
+      {fullAddress(location)}
+      {accessible24hours(location)}
+      {connectorTypes(location)}
+      {paymentDetails(location)}
+    </React.Fragment>
   </Popup>
 );
 

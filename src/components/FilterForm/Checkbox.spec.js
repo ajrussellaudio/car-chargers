@@ -30,6 +30,16 @@ describe("Checkbox", () => {
     });
   });
 
+  it("calls addFilter with `{filterKey: false}` when passed `inverse` prop", () => {
+    const propsWithInverse = { ...props, inverse: true };
+    const wrapper = shallow(<Checkbox {...propsWithInverse} />);
+    wrapper.find("input").simulate("change");
+    expect(props.addFilter.mock.calls.length).toBe(1);
+    expect(props.addFilter.mock.calls[0][0]).toEqual({
+      [props.filterKey]: false
+    });
+  });
+
   it("calls removeFilter with `filterKey` when changed again", () => {
     const wrapper = shallow(<Checkbox {...props} />);
     wrapper.find("input").simulate("change");

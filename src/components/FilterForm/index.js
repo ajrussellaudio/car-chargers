@@ -11,6 +11,18 @@ const FilterForm = props => (
       filterKey="Accessible24Hours"
       text="Has 24 hour access?"
     />
+    <Checkbox
+      {...props}
+      inverse
+      filterKey="AccessRestrictionFlag"
+      text="No access resctrictions?"
+    />
+    <Checkbox
+      {...props}
+      inverse
+      filterKey="SubscriptionRequiredFlag"
+      text="No subscription required?"
+    />
   </React.Fragment>
 );
 
