@@ -23,6 +23,14 @@ describe("filter reducer", () => {
 
   it("removing filter should update state", () => {
     state = filterReducer(state, addFilter({ isAwesome: true }));
+    const action = removeFilter("isAwesome");
+    const expectedState = {};
+    state = filterReducer(state, action);
+    expect(state).toEqual(expectedState);
+  });
+
+  it("adding two and removing one should leave the other one", () => {
+    state = filterReducer(state, addFilter({ isAwesome: true }));
     state = filterReducer(state, addFilter({ name: "Alan" }));
     const action = removeFilter("isAwesome");
     const expectedState = { name: "Alan" };
