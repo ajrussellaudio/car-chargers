@@ -1,16 +1,12 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { addFilter } from "../redux/actions";
+import { addFilter } from "../../redux/actions";
+import Checkbox from "./Checkbox";
 
-const FilterForm = ({ addFilter }) => (
+const FilterForm = props => (
   <React.Fragment>
-    <label htmlFor="accessible-24-hours">Accessible 24 Hours:</label>
-    <input
-      type="checkbox"
-      id="accessible-24-hours"
-      onChange={event => addFilter({ Accessible24Hours: event.target.checked })}
-    />
+    <Checkbox {...props} key="Accessible24Hours" text="Has 24 hour access?" />
   </React.Fragment>
 );
 
