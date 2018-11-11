@@ -43,10 +43,10 @@ npm test
 
 - [React](https://reactjs.org/) - Everyone's favourite UI library
 - [Redux](https://redux.js.org/) - Everyone's favourite UI state management library
-- [Reselect](https://github.com/reduxjs/reselect) - Composable, testable selector library for accessing stuff in state
-- [redux-observable](https://redux-observable.js.org/) - Allows you to attach [RxJS](https://rxjs-dev.firebaseapp.com/) Operators to your Redux actions. It's like redux-thunk on steroids
+  - [Reselect](https://github.com/reduxjs/reselect) - Composable, testable selector library for accessing stuff in state
+  - [redux-observable](https://redux-observable.js.org/) - Allows you to attach [RxJS](https://rxjs-dev.firebaseapp.com/) Operators to your Redux actions. It's like redux-thunk on steroids
 - [React-Leaflet](https://react-leaflet.js.org/) - Component library for [Leaflet](https://leafletjs.com/) maps in React
-- - [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) - For dead simple cluster rendering
+  - [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) - For dead simple cluster rendering
 - [Bulma](https://bulma.io/) - CSS framework. It's like Bootstrap but it doesn't suck.
 - [Font Awesome](https://fontawesome.com/) - For awesome icons
 - [Jest](https://jestjs.io/) - Testing framework
