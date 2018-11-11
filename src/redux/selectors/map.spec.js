@@ -1,4 +1,9 @@
-import { getMapBounds, getFilteredLocationsWithinMapBounds } from "./map";
+import {
+  getMapBounds,
+  getFilteredLocationsWithinMapBounds,
+  getPosition,
+  getZoom
+} from "./map";
 
 describe("getMapBounds", () => {
   it("gets the map bounds held in state", () => {
@@ -29,5 +34,26 @@ describe("getFilteredLocationsWithinMapBounds", () => {
       map: { bounds: dummyMapBounds }
     };
     expect(getFilteredLocationsWithinMapBounds(state).length).toBe(1);
+  });
+});
+
+describe("getPosition", () => {
+  it("gets the map position from state", () => {
+    const dummyPosition = {
+      lat: 0,
+      lng: 0
+    };
+    const state = {
+      map: { position: dummyPosition }
+    };
+    expect(getPosition(state)).toEqual(dummyPosition);
+  });
+});
+
+describe("getZoom", () => {
+  it("gets the zoom level from state", () => {
+    const dummyZoom = 10;
+    const state = { map: { zoom: dummyZoom } };
+    expect(getZoom(state)).toEqual(dummyZoom);
   });
 });

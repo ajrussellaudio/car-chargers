@@ -2,6 +2,8 @@ import { createSelector } from "reselect";
 import { getFilteredLocations } from "./locations";
 
 export const getMapBounds = state => state.map.bounds;
+export const getPosition = state => state.map.position;
+export const getZoom = state => state.map.zoom;
 
 export const getFilteredLocationsWithinMapBounds = createSelector(
   [getFilteredLocations, getMapBounds],
