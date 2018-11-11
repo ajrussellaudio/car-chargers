@@ -1,8 +1,10 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { addFilter, removeFilter } from "../../redux/actions";
 import Checkbox from "./Checkbox";
+import Select from "./Select";
+import { addFilter, removeFilter } from "../../redux/actions";
+import { getConnectorNames } from "../../redux/selectors/connectors";
 
 const FilterForm = props => (
   <React.Fragment>
@@ -23,10 +25,19 @@ const FilterForm = props => (
       filterKey="SubscriptionRequiredFlag"
       text="No subscription required?"
     />
+    <Select
+      {...props}
+      parentKey="Connector"
+      filterKey="ConnectorType"
+      data={props.connectors.sort()}
+    />
   </React.Fragment>
 );
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({
+  ...state,
+  connectors: getConnectorNames(state)
+});
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ addFilter, removeFilter }, dispatch);
 

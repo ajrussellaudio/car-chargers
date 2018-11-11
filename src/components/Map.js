@@ -31,6 +31,8 @@ class Map extends React.Component {
 
   render() {
     const position = [this.state.lat, this.state.lng];
+    console.log(this.props.locations.length);
+
     return (
       <LeafletMap
         center={position}
