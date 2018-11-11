@@ -24,9 +24,17 @@ const fullAddress = location => {
 };
 
 const accessible24hours = location =>
-  location.Accessible24Hours && (
+  location.Accessible24Hours ? (
     <p className="accessible-24-hours">
       <Icon icon={faClock} /> 24 hour access
+    </p>
+  ) : (
+    <p className="accessible-24-hours">
+      <span className="fa-layers fa-fw">
+        <Icon icon={faClock} />
+        <Icon icon={faSlash} />
+      </span>{" "}
+      No 24 hour access
     </p>
   );
 

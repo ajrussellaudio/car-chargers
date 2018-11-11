@@ -1,44 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Car Chargers :car: :zap:
 
-## Available Scripts
+This app displays a map of all the electric car charging stations in the UK.
 
-In the project directory, you can run:
+Data is provided by Data.GOV, specifically the [National Charge Point Registry](https://data.gov.uk/dataset/1ce239a6-d720-4305-ab52-17793fedfac3/national-charge-point-registry). Charge locations are displayed on a map, clustered in areas with multiple charge points. Clicking a cluster will zoom the map to its location. Clicking a single map marker will display details of that charging location:
 
-### `npm start`
+- the name
+- street address and postcode
+- whether or not the location can be accessed 24 hours
+- payment details for the charging location
+- types of connector available at the location
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The data on the map can be filtered:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- by 24 hour access
+- by physical access restrictions
+- by subscription requirement
+- by available connector types
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To install, clone this repo, or download and unzip. `cd` into the directory and:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+This app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and uses the built in Webpack Dev Server to run locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology Stack
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React](https://reactjs.org/) - Everyone's favourite UI library
+- [Redux](https://redux.js.org/) - Everyone's favourite UI state management library
+- [Reselect](https://github.com/reduxjs/reselect) - Composable, testable selector library for accessing stuff in state
+- [redux-observable](https://redux-observable.js.org/) - Allows you to attach [RxJS](https://rxjs-dev.firebaseapp.com/) Operators to your Redux actions. It's like redux-thunk on steroids
+- [React-Leaflet](https://react-leaflet.js.org/) - Component library for [Leaflet](https://leafletjs.com/) maps in React
+- - [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) - For dead simple cluster rendering
+- [Bulma](https://bulma.io/) - CSS framework. It's like Bootstrap but it doesn't suck.
+- [Font Awesome](https://fontawesome.com/) - For awesome icons
+- [Jest](https://jestjs.io/) - Testing framework
+- [Enzyme](https://github.com/airbnb/enzyme) - Shallow test renderer for React (and more...)
