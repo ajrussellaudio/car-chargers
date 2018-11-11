@@ -20,10 +20,6 @@ code {
   margin: 0 auto;
 }
 
-input {
-  display: block;
-}
-
 /* @media (max-width: 1024px) {
   .leaflet-container {
     height: 50vh;

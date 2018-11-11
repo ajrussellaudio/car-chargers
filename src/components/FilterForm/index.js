@@ -3,8 +3,16 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Checkbox from "./Checkbox";
 import Select from "./Select";
-import { addFilter, removeFilter } from "../../redux/actions";
+import { addFilter, removeFilter, moveMap } from "../../redux/actions";
 import { getConnectorNames } from "../../redux/selectors/connectors";
+import GeolocationButton from "./GeolocationButton";
+
+const geoLocToMapPosition = geoLoc => ({
+  position: {
+    lat: geoLoc.coords.latitude,
+    lng: geoLoc.coords.longitude
+  }
+});
 
 const FilterForm = props => (
   <React.Fragment>
@@ -17,7 +25,7 @@ const FilterForm = props => (
       {...props}
       inverse
       filterKey="AccessRestrictionFlag"
-      text="No access resctrictions?"
+      text="No access restrictions?"
     />
     <Checkbox
       {...props}
@@ -31,6 +39,10 @@ const FilterForm = props => (
       filterKey="ConnectorType"
       data={props.connectors.sort()}
     />
+    <GeolocationButton
+      text="Move to my location"
+      onClick={geoLoc => props.moveMap(geoLocToMapPosition(geoLoc))}
+    />
   </React.Fragment>
 );
 
@@ -39,7 +51,7 @@ const mapStateToProps = state => ({
   connectors: getConnectorNames(state)
 });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addFilter, removeFilter }, dispatch);
+  bindActionCreators({ addFilter, removeFilter, moveMap }, dispatch);
 
 export default connect(
   mapStateToProps,
