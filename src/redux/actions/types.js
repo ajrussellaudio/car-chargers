@@ -6,3 +6,4 @@ export const ADD_FILTER = "ADD_FILTER";
 export const REMOVE_FILTER = "REMOVE_FILTER";
 
 export const UPDATE_MAP_BOUNDS = "UPDATE_MAP_BOUNDS";
+export const MOVE_MAP = "MOVE_MAP";
