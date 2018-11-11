@@ -31,6 +31,14 @@ npm start
 
 This app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and uses the built in Webpack Dev Server to run locally.
 
+### Running tests
+
+This app is fully tested. To run the test suites:
+
+```bash
+npm test
+```
+
 ## Technology Stack
 
 - [React](https://reactjs.org/) - Everyone's favourite UI library
