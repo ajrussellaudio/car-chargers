@@ -5,9 +5,13 @@ import { connect } from "react-redux";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
-import { updateMapBounds } from "../redux/actions";
+import { updateMapBounds, moveMap } from "../redux/actions";
 import Marker from "./Marker";
-import { getFilteredLocationsWithinMapBounds } from "../redux/selectors/map";
+import {
+  getFilteredLocationsWithinMapBounds,
+  getPosition,
+  getZoom
+} from "../redux/selectors/map";
 
 class Map extends React.Component {
   constructor(props) {
@@ -21,23 +25,34 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    this.handleMove();
+    const mapElement = this.refs.map.leafletElement;
+    this.props.moveMap({
+      position: {
+        lat: 54.297407654621594,
+        lng: -1.5370130538940432
+      },
+      zoom: 13
+    });
+    this.props.updateMapBounds(mapElement.getBounds());
   }
 
   handleMove() {
-    const bounds = this.refs.map.leafletElement.getBounds();
-    this.props.updateMapBounds(bounds);
+    const mapElement = this.refs.map.leafletElement;
+    this.props.updateMapBounds(mapElement.getBounds());
+    this.props.moveMap({
+      position: mapElement.getCenter(),
+      zoom: mapElement.getZoom()
+    });
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
-    console.log(this.props.locations.length);
-
+    const { position, zoom } = this.props;
     return (
       <LeafletMap
         center={position}
-        zoom={this.state.zoom}
-        onMoveend={() => this.handleMove(this)}
+        zoom={zoom}
+        minZoom={10}
+        onMoveend={this.handleMove}
         ref="map"
       >
         <TileLayer
@@ -56,15 +71,22 @@ class Map extends React.Component {
 
 Map.propTypes = {
   locations: PropTypes.array,
+  position: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  }),
+  zoom: PropTypes.number,
   updateMapBounds: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-  locations: getFilteredLocationsWithinMapBounds(state)
+  locations: getFilteredLocationsWithinMapBounds(state),
+  position: getPosition(state),
+  zoom: getZoom(state)
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ updateMapBounds }, dispatch);
+  bindActionCreators({ updateMapBounds, moveMap }, dispatch);
 
 export default connect(
   mapStateToProps,
