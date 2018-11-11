@@ -17,9 +17,11 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lat: 55.8642,
-      lng: -4.2518,
-      zoom: 11
+      minZoom: 10,
+      defaultPosition: {
+        lat: 51.509865,
+        lng: -0.118092
+      }
     };
     this.handleMove = this.handleMove.bind(this);
   }
@@ -27,11 +29,8 @@ class Map extends React.Component {
   componentDidMount() {
     const mapElement = this.refs.map.leafletElement;
     this.props.moveMap({
-      position: {
-        lat: 54.297407654621594,
-        lng: -1.5370130538940432
-      },
-      zoom: 13
+      position: this.state.defaultPosition,
+      zoom: this.state.minZoom
     });
     this.props.updateMapBounds(mapElement.getBounds());
   }
@@ -51,7 +50,7 @@ class Map extends React.Component {
       <LeafletMap
         center={position}
         zoom={zoom}
-        minZoom={10}
+        minZoom={this.state.minZoom}
         onMoveend={this.handleMove}
         ref="map"
       >
