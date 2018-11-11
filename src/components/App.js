@@ -7,7 +7,7 @@ import { Tile, Container } from "bloomer";
 
 import { fetchLocations } from "../redux/actions";
 
-import FilteredMap from "./FilteredMap";
+import Map from "./Map";
 import Loading from "./Loading";
 import Error from "./Error";
 import FilterForm from "./FilterForm";
@@ -42,7 +42,7 @@ export class App extends Component {
           <Tile isParent isVertical isSize={2}>
             <Tile isChild>
               {isLoading && <Loading />}
-              {!isLoading && !error && <FilteredMap />}
+              {!isLoading && !error && <Map />}
               {error && <Error message={error} />}
             </Tile>
           </Tile>

@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
-import Marker from "./Marker";
 import MarkerClusterGroup from "react-leaflet-markercluster";
+
+import { getFilteredLocations } from "../redux/selectors";
+import Marker from "./Marker";
 
 class Map extends React.Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class Map extends React.Component {
     return (
       <LeafletMap center={position} zoom={this.state.zoom}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MarkerClusterGroup>
@@ -36,4 +39,8 @@ Map.propTypes = {
   locations: PropTypes.array
 };
 
-export default Map;
+const mapStateToProps = state => ({
+  locations: getFilteredLocations(state)
+});
+
+export default connect(mapStateToProps)(Map);
