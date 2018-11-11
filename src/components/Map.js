@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
-import { getFilteredLocations } from "../redux/selectors";
 import { updateMapBounds } from "../redux/actions";
 import Marker from "./Marker";
+import { getFilteredLocationsWithinMapBounds } from "../redux/selectors/map";
 
 class Map extends React.Component {
   constructor(props) {
@@ -20,7 +20,11 @@ class Map extends React.Component {
     this.handleMove = this.handleMove.bind(this);
   }
 
-  handleMove(thing) {
+  componentDidMount() {
+    this.handleMove();
+  }
+
+  handleMove() {
     const bounds = this.refs.map.leafletElement.getBounds();
     this.props.updateMapBounds(bounds);
   }
@@ -54,7 +58,7 @@ Map.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  locations: getFilteredLocations(state)
+  locations: getFilteredLocationsWithinMapBounds(state)
 });
 
 const mapDispatchToProps = dispatch =>

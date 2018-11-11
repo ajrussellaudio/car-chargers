@@ -1,4 +1,4 @@
-import { getAllLocations, getFilter, getFilteredLocations } from "./locations";
+import { getAllLocations, getFilteredLocations } from "./locations";
 
 describe("getAllLocations", () => {
   it("returns array of all locations from state", () => {
