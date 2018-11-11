@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { Tile, Container } from "bloomer";
-
 import { fetchLocations } from "../redux/actions";
 
 import Map from "./Map";
@@ -34,22 +32,20 @@ export class App extends Component {
     } = this.props;
 
     return (
-      <Container>
-        <Tile isAncestor isFullWidth>
-          <Tile isParent isVertical isSize={2}>
-            <Tile isChild>
-              {isLoading && <Loading />}
-              {!isLoading && !error && <Map />}
-              {error && <Error message={error} />}
-            </Tile>
-          </Tile>
-          <Tile isParent isVertical isSize={4}>
-            <Tile isChild>
-              <FilterForm />
-            </Tile>
-          </Tile>
-        </Tile>
-      </Container>
+      <div className="tile is-ancestor is-full-width">
+        <div className="tile is-parent is-9">
+          <article className="tile is-child">
+            {isLoading && <Loading />}
+            {!isLoading && !error && <Map />}
+            {error && <Error message={error} />}
+          </article>
+        </div>
+        <div className="tile is-parent is-3">
+          <div className="tile is-child">
+            <FilterForm />
+          </div>
+        </div>
+      </div>
     );
   }
 }

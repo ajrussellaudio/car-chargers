@@ -14,14 +14,6 @@ code {
 }
 
 .leaflet-container {
-  max-height: 80vh;
-  min-height: 66vh;
+  height: 66vh;
   width: 100%;
-  margin: 0 auto;
 }
-
-/* @media (max-width: 1024px) {
-  .leaflet-container {
-    height: 50vh;
-  }
-} */

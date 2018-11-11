@@ -11,39 +11,42 @@ const geoLocToMapPosition = geoLoc => ({
   position: {
     lat: geoLoc.coords.latitude,
     lng: geoLoc.coords.longitude
-  }
+  },
+  zoom: 14
 });
 
 const FilterForm = props => (
-  <React.Fragment>
-    <Checkbox
-      {...props}
-      filterKey="Accessible24Hours"
-      text="Has 24 hour access?"
-    />
-    <Checkbox
-      {...props}
-      inverse
-      filterKey="AccessRestrictionFlag"
-      text="No access restrictions?"
-    />
-    <Checkbox
-      {...props}
-      inverse
-      filterKey="SubscriptionRequiredFlag"
-      text="No subscription required?"
-    />
-    <Select
-      {...props}
-      parentKey="Connector"
-      filterKey="ConnectorType"
-      data={props.connectors.sort()}
-    />
-    <GeolocationButton
-      text="Move to my location"
-      onClick={geoLoc => props.moveMap(geoLocToMapPosition(geoLoc))}
-    />
-  </React.Fragment>
+  <section className="section">
+    <div className="container is-tablet">
+      <Checkbox
+        {...props}
+        filterKey="Accessible24Hours"
+        text="Has 24 hour access?"
+      />
+      <Checkbox
+        {...props}
+        inverse
+        filterKey="AccessRestrictionFlag"
+        text="No access restrictions?"
+      />
+      <Checkbox
+        {...props}
+        inverse
+        filterKey="SubscriptionRequiredFlag"
+        text="No subscription required?"
+      />
+      <Select
+        {...props}
+        parentKey="Connector"
+        filterKey="ConnectorType"
+        data={props.connectors.sort()}
+      />
+      <GeolocationButton
+        text="Move to my location"
+        onClick={geoLoc => props.moveMap(geoLocToMapPosition(geoLoc))}
+      />
+    </div>
+  </section>
 );
 
 const mapStateToProps = state => ({

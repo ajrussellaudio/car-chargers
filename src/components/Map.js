@@ -56,8 +56,8 @@ class Map extends React.Component {
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+          url="http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png "
+        />{" "}
         <MarkerClusterGroup>
           {this.props.locations.map(location => (
             <Marker key={location.ChargeDeviceId} location={location} />
