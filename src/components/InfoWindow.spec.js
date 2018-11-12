@@ -45,22 +45,10 @@ describe("InfoWindow", () => {
     expect(address.text()).toBe(expectedAddress);
   });
 
-  it("should render icon if accessible 24 hours", () => {
+  it("should render icon", () => {
     const wrapper = shallow(<InfoWindow {...props} />);
     const iconPTag = wrapper.find(".accessible-24-hours");
     expect(iconPTag.length).toBe(1);
-  });
-
-  it("should not render icon if not accessible 24 hours", () => {
-    props = {
-      location: {
-        ...props.location,
-        Accessible24Hours: false
-      }
-    };
-    const wrapper = shallow(<InfoWindow {...props} />);
-    const iconPTag = wrapper.find(".accessible-24-hours");
-    expect(iconPTag.length).toBe(0);
   });
 
   it("should render list of connector types", () => {

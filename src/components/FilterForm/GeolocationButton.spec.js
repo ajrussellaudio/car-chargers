@@ -34,14 +34,16 @@ describe("GeolocationButton", () => {
   it("calls navigator.geolocation.getCurrentPosition on click", () => {
     navigator.geolocation = { getCurrentPosition: jest.fn() };
     const wrapper = shallow(<GeolocationButton {...props} />);
-    wrapper.simulate("click");
+    const button = wrapper.find("button");
+    button.simulate("click");
     expect(navigator.geolocation.getCurrentPosition.mock.calls.length).toBe(1);
   });
 
   it("passes onClick prop to navigator.geolocation.getCurrentPosition", () => {
     navigator.geolocation = { getCurrentPosition: jest.fn() };
     const wrapper = shallow(<GeolocationButton {...props} />);
-    wrapper.simulate("click");
+    const button = wrapper.find("button");
+    button.simulate("click");
     expect(navigator.geolocation.getCurrentPosition.mock.calls[0][0]).toEqual(
       props.onClick
     );

@@ -62,13 +62,15 @@ describe("Select", () => {
 
   it("calls addFilter when changed", () => {
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: {} } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: {} } });
     expect(props.addFilter.mock.calls.length).toBe(1);
   });
 
   it("calls addFilter with value of selected option", () => {
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: "SPROCKET" } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: "SPROCKET" } });
     expect(props.addFilter.mock.calls[0][0]).toEqual({
       [props.filterKey]: "SPROCKET"
     });
@@ -77,7 +79,8 @@ describe("Select", () => {
   it("calls addFilter with value of selected option with parent filter key", () => {
     props = { ...props, parentKey: "PARENT_KEY" };
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: "SPROCKET" } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: "SPROCKET" } });
     expect(props.addFilter.mock.calls[0][0]).toEqual({
       [props.parentKey]: [{ [props.filterKey]: "SPROCKET" }]
     });
@@ -85,20 +88,23 @@ describe("Select", () => {
 
   it("calls removeFilter with key when No Preference option selected", () => {
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: "" } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: "" } });
     expect(props.removeFilter.mock.calls.length).toBe(1);
   });
 
   it("calls removeFilter with key when No Preference option selected", () => {
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: "" } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: "" } });
     expect(props.removeFilter.mock.calls[0][0]).toBe(props.filterKey);
   });
 
   it("calls removeFilter with parentKey when parentKey is passed", () => {
     props = { ...props, parentKey: "PARENT_KEY" };
     const wrapper = shallow(<Select {...props} />);
-    wrapper.simulate("change", { target: { value: "" } });
+    const select = wrapper.find("select");
+    select.simulate("change", { target: { value: "" } });
     expect(props.removeFilter.mock.calls[0][0]).toBe(props.parentKey);
   });
 });
