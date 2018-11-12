@@ -33,7 +33,7 @@ describe("InfoWindow", () => {
 
   it("should render a heading with the device name", () => {
     const wrapper = shallow(<InfoWindow {...props} />);
-    const headerText = wrapper.find("h1").text();
+    const headerText = wrapper.find(".device-name").text();
     const deviceName = props.location.ChargeDeviceName;
     expect(headerText).toBe(deviceName);
   });

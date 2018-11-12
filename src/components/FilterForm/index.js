@@ -17,34 +17,54 @@ const geoLocToMapPosition = geoLoc => ({
 
 const FilterForm = props => (
   <section className="section">
-    <div className="container is-tablet">
-      <Checkbox
-        {...props}
-        filterKey="Accessible24Hours"
-        text="Has 24 hour access?"
-      />
-      <Checkbox
-        {...props}
-        inverse
-        filterKey="AccessRestrictionFlag"
-        text="No access restrictions?"
-      />
-      <Checkbox
-        {...props}
-        inverse
-        filterKey="SubscriptionRequiredFlag"
-        text="No subscription required?"
-      />
-      <Select
-        {...props}
-        parentKey="Connector"
-        filterKey="ConnectorType"
-        data={props.connectors.sort()}
-      />
-      <GeolocationButton
-        text="Move to my location"
-        onClick={geoLoc => props.moveMap(geoLocToMapPosition(geoLoc))}
-      />
+    <div className="field">
+      <div className="control">
+        <Checkbox
+          {...props}
+          filterKey="Accessible24Hours"
+          text="Has 24 hour access?"
+        />
+      </div>
+    </div>
+    <div className="field">
+      <div className="control">
+        <Checkbox
+          {...props}
+          inverse
+          filterKey="AccessRestrictionFlag"
+          text="No access restrictions?"
+        />
+      </div>
+    </div>
+    <div className="field">
+      <div className="control">
+        <Checkbox
+          {...props}
+          inverse
+          filterKey="SubscriptionRequiredFlag"
+          text="No subscription required?"
+        />
+      </div>
+    </div>
+    <div className="field">
+      <div className="control">
+        <div className="select">
+          <Select
+            {...props}
+            parentKey="Connector"
+            filterKey="ConnectorType"
+            data={props.connectors.sort()}
+          />
+        </div>
+      </div>
+    </div>
+    <div className="field">
+      <div className="control">
+        <GeolocationButton
+          text="Move to my location"
+          onClick={geoLoc => props.moveMap(geoLocToMapPosition(geoLoc))}
+        />
+      </div>
     </div>
   </section>
 );

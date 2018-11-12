@@ -64,13 +64,19 @@ const paymentDetails = ({ PaymentRequiredFlag, PaymentDetails }) =>
 
 const InfoWindow = ({ location }) => (
   <Popup>
-    <React.Fragment>
-      <h1>{location.ChargeDeviceName}</h1>
-      {fullAddress(location)}
-      {accessible24hours(location)}
-      {connectorTypes(location)}
-      {paymentDetails(location)}
-    </React.Fragment>
+    <div class="card">
+      <div className="card-header">
+        <p className="card-header-title device-name">
+          {location.ChargeDeviceName}
+        </p>
+      </div>
+      <div className="card-content">
+        {fullAddress(location)}
+        {accessible24hours(location)}
+        {connectorTypes(location)}
+        {paymentDetails(location)}
+      </div>
+    </div>
   </Popup>
 );
 

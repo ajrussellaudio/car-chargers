@@ -13,6 +13,11 @@ code {
     monospace;
 }
 
+.tile.is-parent {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .leaflet-container {
   height: 66vh;
   width: 100%;

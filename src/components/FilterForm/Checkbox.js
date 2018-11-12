@@ -27,19 +27,17 @@ class Checkbox extends React.Component {
   render() {
     const { filterKey, text } = this.props;
     return (
-      <div className="field">
-        <div className="control">
-          <label htmlFor={filterKey} className="checkbox">
-            <input
-              type="checkbox"
-              id={filterKey}
-              checked={this.state.checked}
-              onChange={this.handleChange}
-            />{" "}
-            {text}
-          </label>
-        </div>
-      </div>
+      <React.Fragment>
+        <label htmlFor={filterKey} className="checkbox">
+          <input
+            type="checkbox"
+            id={filterKey}
+            checked={this.state.checked}
+            onChange={this.handleChange}
+          />{" "}
+          {text}
+        </label>
+      </React.Fragment>
     );
   }
 }
