@@ -1,4 +1,4 @@
-# Car Chargers :car: :zap:
+# Car Chargers :car: :zap: :smile:
 
 This app displays a map of all the electric car charging stations in the UK.
 
